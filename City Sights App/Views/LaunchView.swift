@@ -9,8 +9,17 @@ import SwiftUI
 
 struct LaunchView: View {
     var body: some View {
+        
+        
         Text("Hello, world!")
+            .font(.title3)
+            .fontWeight(.semibold)
+            .foregroundColor(.white)
             .padding()
+            .background(.green)
+            .cornerRadius(10)
+            .shadow(color: .green, radius: 15)
+        
     }
 }
 
