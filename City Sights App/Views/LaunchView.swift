@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct LaunchView: View {
+    
+    @EnvironmentObject var model: ContentModel
+    
     var body: some View {
         
-        
-        Text("Hello, world!")
-//        Text("\()")
-            .font(.title3)
-            .fontWeight(.semibold)
-            .foregroundColor(.white)
-            .padding()
-            .background(.green)
-            .cornerRadius(10)
-            .shadow(color: .green, radius: 15)
-        
+        // Detect the authorization status of geolocating the user
+        if model.authorizationState == .notDetermined {
+            // If undetermined, show onboarding
+            
+        } else if model.authorizationState == .authorizedWhenInUse || model.authorizationState == .authorizedAlways {
+            // If approved, show HomeView
+            HomeView()
+        } else {
+            // If denied, show DeniedView
+            
+        }
+       
     }
 }
 
