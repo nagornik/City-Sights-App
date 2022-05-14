@@ -12,6 +12,7 @@ struct LaunchView: View {
         
         
         Text("Hello, world!")
+//        Text("\()")
             .font(.title3)
             .fontWeight(.semibold)
             .foregroundColor(.white)

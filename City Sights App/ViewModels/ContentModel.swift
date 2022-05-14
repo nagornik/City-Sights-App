@@ -11,6 +11,8 @@ import CoreLocation
 class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     var locationManager = CLLocationManager()
+    @Published var restaurants = [Business]()
+    @Published var sights = [Business]()
     
     override init() {
         
@@ -27,7 +29,7 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
         //        locationManager.startUpdatingLocation()
     }
     
-    // MARK: Location Manager Delegate Methods
+    // MARK: - Location Manager Delegate Methods
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         if locationManager.authorizationStatus == .authorizedAlways ||
             locationManager.authorizationStatus == .authorizedWhenInUse {
@@ -49,26 +51,27 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
             // Stop requesting the location after we get it once
             locationManager.stopUpdatingLocation()
             // If we have the coordinates of the user, send into Yelp API
-            //            getBusinesses(category: "arts", location: userLocation!)
-            getBusinesses(category: "restaurants", location: userLocation!)
+            getBusinesses(category: Constants.sightsKey, location: userLocation!)
+            getBusinesses(category: Constants.restaurantsKey, location: userLocation!)
         }
         print(locations.first ?? "no data yet")
         
     }
     
+    // MARK: - Yelp API methods
     func getBusinesses(category: String, location: CLLocation) {
         
         // Create URL
         //        let urlString = "https://api.yelp.com/v3/businesses/search?latitude=\(location.coordinate.latitude)&longtitude=\(location.coordinate.longitude)&categories=\(category)&limit=6"
         //        let url = URL(string: urlString)
         
-        var urlComponents = URLComponents(string: "https://api.yelp.com/v3/businesses/search")
+        var urlComponents = URLComponents(string: Constants.apiUrl)
         guard urlComponents != nil else {
             return
         }
         urlComponents!.queryItems = [
             URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
-            URLQueryItem(name: "longtitude", value: String(location.coordinate.longitude)),
+            URLQueryItem(name: "longitude", value: String(location.coordinate.longitude)),
             URLQueryItem(name: "categories", value: category),
             URLQueryItem(name: "limit", value: "6")
         ]
@@ -79,14 +82,44 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
             // Create URL request
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
             request.httpMethod = "GET"
-            request.addValue("Bearer 7-f6l6flPnJhxHNDLECBbwyuGTDrkB7PwDGuvB0I_tx1CM533XfW7uT9NklqU_Qy6yK0bi58QkmHqJQgTYTNTxEXRckOyOFC99-DAh12oZRqz8DhRb5ksYJmc71-YnYx", forHTTPHeaderField: "Authorization")
+            request.addValue("Bearer \(Constants.apiKey)", forHTTPHeaderField: "Authorization")
             // Get URLSession
             let session = URLSession.shared
             // Create Data Task
             let dataTask = session.dataTask(with: request) { data, responce, error in
                 // Check that there isn't an error
                 if error == nil {
-                    print(responce)
+                    
+                    do {
+                        // Parse json
+                        let decoder = JSONDecoder()
+                        let result = try decoder.decode(BusinessSearch.self, from: data!)
+                        
+                        DispatchQueue.main.async {
+                            // Assign results to the appropriate property
+//                            if category == Constants.sightsKey {
+//                                self.sights = result.businesses
+//                            } else if category == Constants.restaurantsKey {
+//                                self.restaurants = result.businesses
+//                            }
+                            
+                            // Assign results to the appropriate property
+                            switch category {
+                            case Constants.sightsKey:
+                                self.sights = result.businesses
+                            case Constants.restaurantsKey:
+                                self.restaurants = result.businesses
+                            default:
+                                break
+                            }
+                            
+                        }
+                        
+                        print(result)
+                    } catch {}
+                    
+                    
+                    
                 }
             }
             // Start the Data Task
