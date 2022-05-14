@@ -19,6 +19,7 @@
 		4B485298283019D30022AA49 /* BusinessList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B485297283019D30022AA49 /* BusinessList.swift */; };
 		4B48529A28301C1D0022AA49 /* BusinessSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48529928301C1D0022AA49 /* BusinessSectionHeader.swift */; };
 		4B48529C28301CEF0022AA49 /* BusinessSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48529B28301CEF0022AA49 /* BusinessSection.swift */; };
+		4B48529E2830340C0022AA49 /* BusinessRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48529D2830340C0022AA49 /* BusinessRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		4B485297283019D30022AA49 /* BusinessList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessList.swift; sourceTree = "<group>"; };
 		4B48529928301C1D0022AA49 /* BusinessSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSectionHeader.swift; sourceTree = "<group>"; };
 		4B48529B28301CEF0022AA49 /* BusinessSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSection.swift; sourceTree = "<group>"; };
+		4B48529D2830340C0022AA49 /* BusinessRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				4B485297283019D30022AA49 /* BusinessList.swift */,
 				4B48529928301C1D0022AA49 /* BusinessSectionHeader.swift */,
 				4B48529B28301CEF0022AA49 /* BusinessSection.swift */,
+				4B48529D2830340C0022AA49 /* BusinessRow.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B48527A282ED30D0022AA49 /* LaunchView.swift in Sources */,
+				4B48529E2830340C0022AA49 /* BusinessRow.swift in Sources */,
 				4B485295283016700022AA49 /* HomeView.swift in Sources */,
 				4B48528B28300D790022AA49 /* Business.swift in Sources */,
 				4B48529A28301C1D0022AA49 /* BusinessSectionHeader.swift in Sources */,
