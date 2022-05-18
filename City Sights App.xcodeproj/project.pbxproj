@@ -20,6 +20,7 @@
 		4B48529A28301C1D0022AA49 /* BusinessSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48529928301C1D0022AA49 /* BusinessSectionHeader.swift */; };
 		4B48529C28301CEF0022AA49 /* BusinessSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48529B28301CEF0022AA49 /* BusinessSection.swift */; };
 		4B48529E2830340C0022AA49 /* BusinessRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B48529D2830340C0022AA49 /* BusinessRow.swift */; };
+		4B4852A12832460F0022AA49 /* BusinessDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4852A02832460F0022AA49 /* BusinessDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		4B48529928301C1D0022AA49 /* BusinessSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSectionHeader.swift; sourceTree = "<group>"; };
 		4B48529B28301CEF0022AA49 /* BusinessSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSection.swift; sourceTree = "<group>"; };
 		4B48529D2830340C0022AA49 /* BusinessRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessRow.swift; sourceTree = "<group>"; };
+		4B4852A02832460F0022AA49 /* BusinessDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +156,17 @@
 				4B48529928301C1D0022AA49 /* BusinessSectionHeader.swift */,
 				4B48529B28301CEF0022AA49 /* BusinessSection.swift */,
 				4B48529D2830340C0022AA49 /* BusinessRow.swift */,
+				4B48529F283245F80022AA49 /* Detail */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		4B48529F283245F80022AA49 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4B4852A02832460F0022AA49 /* BusinessDetail.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +245,7 @@
 				4B48528B28300D790022AA49 /* Business.swift in Sources */,
 				4B48529A28301C1D0022AA49 /* BusinessSectionHeader.swift in Sources */,
 				4B485278282ED30D0022AA49 /* CitySightsApp.swift in Sources */,
+				4B4852A12832460F0022AA49 /* BusinessDetail.swift in Sources */,
 				4B48528D28300F790022AA49 /* BusinessSearch.swift in Sources */,
 				4B485298283019D30022AA49 /* BusinessList.swift in Sources */,
 				4B48529C28301CEF0022AA49 /* BusinessSection.swift in Sources */,
