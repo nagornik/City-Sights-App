@@ -111,5 +111,5 @@ struct Category: Decodable {
 
 struct Coordinate: Decodable {
     var latitude: Double?
-    var logitude: Double?
+    var longitude: Double?
 }
